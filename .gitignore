@@ -3,3 +3,4 @@ n.env
 ndist
 n.env.local
 n.DS_Store
+.env
