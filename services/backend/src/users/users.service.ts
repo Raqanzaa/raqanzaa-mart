@@ -2,7 +2,8 @@
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User, UserRole } from './entities/user.entity';
+import { User } from './user.entity';
+import { Role } from './role.enum';
 import * as bcrypt from 'bcryptjs';
 
 @Injectable()
@@ -51,7 +52,7 @@ export class UsersService {
             email: email || null,
             googleId,
             name: profile.displayName || email,
-            role: UserRole.CUSTOMER,
+            role: Role.CUSTOMER,
         });
         return this.repo.save(newUser);
     }
