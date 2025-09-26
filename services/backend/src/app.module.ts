@@ -5,10 +5,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
-import { StoreModule } from './store/store.module';
 import { PaymentsModule } from './payments/payments.module';
 import { CategoriesModule } from './categories/categories.module';
 import { OrdersModule } from './orders/orders.module';
+import { SettingsModule } from './settings/settings.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
@@ -22,10 +23,11 @@ import { OrdersModule } from './orders/orders.module';
     AuthModule,
     UsersModule,
     ProductsModule,
-    StoreModule,
     PaymentsModule,
     CategoriesModule,
     OrdersModule,
+    SettingsModule,
+    CartModule,
   ],
 })
 export class AppModule {}

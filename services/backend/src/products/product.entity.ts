@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+// product.entity.ts (small improvement)
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { Category } from '../categories/category.entity';
 
 @Entity()
@@ -12,7 +13,7 @@ export class Product {
     @Column('text')
     description: string;
 
-    @Column('decimal')
+    @Column('decimal', { precision: 12, scale: 2 })
     price: number;
 
     @Column()
@@ -20,6 +21,9 @@ export class Product {
 
     @Column({ nullable: true })
     imageUrl: string;
+
+    @Column({ type: 'enum', enum: ['normal', 'preorder', 'booking'], default: 'normal' })
+    type: 'normal' | 'preorder' | 'booking';
 
     @Column({ type: 'enum', enum: ['active', 'inactive'], default: 'active' })
     status: 'active' | 'inactive';
@@ -30,4 +34,10 @@ export class Product {
 
     @Column()
     categoryId: number;
+
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
 }
